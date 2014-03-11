@@ -94,15 +94,13 @@ bool VTFThumbCreator::create(const QString &path, int width, int height, QImage 
 
     if (true || (vlUInt)width != vwidth || (vlUInt)height != vheight) {
         // scale image
-//        QImage orig(vwidth, vheight, QImage::Format_ARGB32);
         QImage orig(vwidth, vheight, qformat);
 
-//        if (!VTFLib::CVTFFile::Convert(frame, orig.bits(), vwidth, vheight, srcformat, IMAGE_FORMAT_ARGB8888)) {
         if (!VTFLib::CVTFFile::Convert(frame, orig.bits(), vwidth, vheight, srcformat, dstformat)) {
             qDebug("%s", VTFLib::LastError.Get());
             return false;
         }
-//qDebug("%s scale and convert", qPrintable(path));
+
         image = orig.scaled(width, height, Qt::KeepAspectRatio, Qt::FastTransformation);
     }
     else {
