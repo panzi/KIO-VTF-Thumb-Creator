@@ -42,7 +42,7 @@ bool VTFThumbCreator::create(const QString &path, int width, int height, QImage 
 
     vlUInt vwidth  = file.GetThumbnailWidth();
     vlUInt vheight = file.GetThumbnailHeight();
-//    vlUInt vdepth  = file.GetDepth();
+    vlUInt vdepth  = file.GetDepth();
 
     if (file.GetHasThumbnail() && (vwidth >= (vlUInt)width || vheight >= (vlUInt)height)) {
         // get image from thumbnail
@@ -55,26 +55,24 @@ bool VTFThumbCreator::create(const QString &path, int width, int height, QImage 
 
         vwidth  = file.GetWidth();
         vheight = file.GetHeight();
-/*
-        vlUInt level   = file.GetMipmapCount();
+
+        vlUInt level   = file.GetMipmapCount() - 1;
         vlUInt mwidth  = 0;
         vlUInt mheight = 0;
         vlUInt mdepth  = 0;
 
         while (level > 0) {
             VTFLib::CVTFFile::ComputeMipmapDimensions(vwidth, vheight, vdepth, level, mwidth, mheight, mdepth);
-            if (mwidth >= (vlUInt)width || mheight >= (vlUInt)height)
+            if (mwidth >= (vlUInt)width || mheight >= (vlUInt)height) {
+                vwidth  = mwidth;
+                vheight = mheight;
+                vdepth  = mdepth;
                 break;
+            }
             -- level;
         }
 
-        vwidth  = mwidth;
-        vheight = mheight;
-        vdepth  = mdepth;
-
         frame = file.GetData(file.GetFrameCount() - 1, 0, 0, level);
-*/
-        frame = file.GetData(file.GetFrameCount() - 1, 0, 0, 0);
     }
 
     if (!frame) {
