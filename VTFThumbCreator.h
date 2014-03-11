@@ -16,3 +16,19 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#ifndef VTFTHUMBCREATOR_H
+#define VTFTHUMBCREATOR_H
+
+#include <kio/thumbcreator.h>
+
+class VTFThumbCreator : public ThumbCreator {
+public:
+    bool create(const QString &path, int width, int height, QImage &image);
+    Flags flags() const;
+};
+
+extern "C" {
+    KDE_EXPORT ThumbCreator *new_creator();
+}
+
+#endif
