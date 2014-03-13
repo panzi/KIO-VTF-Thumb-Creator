@@ -4,6 +4,6 @@ Type=Service
 Name=Valve Texture Format
 ServiceTypes=ThumbCreator
 MimeType=image/x-vtf;
-CacheThumbnail=false
+CacheThumbnail=true
 X-KDE-Library=vtfthumbcreator
 ThumbnailerVersion=1
