@@ -4,6 +4,10 @@ KIO Thumbnail VTF Plugin
 Plugin for KDE KIO thumbnail to load Valve Texture Files (read-only).
 Using this you will be able to preview VTF files in KDE programs like dolphin.
 
+For a general read-only integration into Qt applications (e.g. view VTF files in
+gwenview) see [qvtf](https://github.com/panzi/qvtf) and for the same for Gtk+ see
+[pixbufloader-vtf](https://github.com/panzi/pixbufloader-vtf).
+
 ### Setup
 
 	git clone https://github.com/panzi/KIO-VTF-Thumb-Creator.git
@@ -14,7 +18,7 @@ Using this you will be able to preview VTF files in KDE programs like dolphin.
 	sudo make install
 
 To enable previews in dolphin open the settings dialog (Control -> Configure
-Dolpgin...) and enable Valve Texture Format under General -> Previews.
+Dolphin...) and enable Valve Texture Format under General -> Previews.
 
 ### Dependencies
 
